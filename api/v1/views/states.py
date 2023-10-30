@@ -29,7 +29,7 @@ def delete_state(state_id):
     """ Delete state by obj ID """
     state = storage.get("State", state_id)
     if state is None:
-        return (404)
+        abort(404)
     storage.delete(state)
     storage.save()
     return make_response(jsonify({}), 200)
