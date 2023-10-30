@@ -4,7 +4,7 @@
 from flask import Flask
 from models import storage
 from api.v1.views import app_views
-# from flask_cors import CORS
+from flask_cors import CORS
 from flask import jsonify
 from os import getenv
 
@@ -22,6 +22,10 @@ def downtear(self):
 @app.errorhandler(404)
 def page_not_found(error):
     return jsonify({'error': 'Not found'}), 404
+
+
+# enable CORS:
+CORS(app, resources={r'/api/v1/*': {'origins': '0.0.0.0'}})
 
 
 if __name__ == "__main__":
