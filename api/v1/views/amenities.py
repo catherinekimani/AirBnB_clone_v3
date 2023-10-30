@@ -48,8 +48,7 @@ def create_amenities():
     return jsonify(new_amenity.to_dict()), 201
 
 
-@app_views.route('/amenities/<amenity_id>', methods=['PUT']
-                 strict_slashes=False)
+@app_views.route('/amenities/<amenity_id>', methods=['PUT'], strict_slashes=False)
 def update_amenities(amenity_id):
     amenity = storage.get(Amenity, amenity_id)
     if amenity is None:
