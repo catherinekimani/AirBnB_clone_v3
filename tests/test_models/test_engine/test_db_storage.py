@@ -110,7 +110,8 @@ class TestDBStorage(unittest.TestCase):
         new_state = State(name="Florida")
         new_state.save()
         new_user = User("bob@foobar.com", password="password")
-@unittest.skipIf(os.getenv(
+
+    @unittest.skipIf(os.getenv(
         'HBNB_TYPE_STORAGE') != 'db', "not testing db storage")
     def test_get(self):
         storage = FileStorage
@@ -130,7 +131,9 @@ class TestDBStorage(unittest.TestCase):
         self.assertEqual(storage.count("State"), state_len)
         new_state = State()
         new_state.save()
+        new_user = User("bob@foobar.com", password="password")
+        new_user.save()
         self.assertEqual(storage.count(), initial_len + 1)
-        self.assertEqual(storage.count("State"), state_len + 1)        new_user.save()
+        self.assertEqual(storage.count("State"), state_len + 1)
         self.assertEqual(models.storage.count("State"), initial_ct + 1)
         self.assertEqual(models.storage.count(), initial_ct + 2)
