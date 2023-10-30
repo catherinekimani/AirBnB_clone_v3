@@ -5,6 +5,7 @@ from api.v1.views import app_views
 from flask import jsonify, request, abort
 from models import storage
 from models.amenity import Amenity
+
 app.url_map.strict_slashes = False
 
 
